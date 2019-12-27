@@ -1,0 +1,22 @@
+service: lambda-tests-layer
+
+provider:
+  name: aws
+  runtime: python3.6
+  region: eu-central-1
+  timeout: 30
+
+layers:
+  features:
+    path: features
+    CompatibleRuntimes: [
+      "python3.6"
+    ]
+
+resources:
+  Outputs:
+    FeaturesLayerExport:
+       Value:
+         Ref: FeaturesLambdaLayer
+       Export:
+         Name: FeaturesLambdaLayer

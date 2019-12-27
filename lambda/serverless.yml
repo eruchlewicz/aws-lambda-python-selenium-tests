@@ -1,0 +1,22 @@
+service: lambda-test-runner
+app: lambda-test-runner
+
+provider:
+  name: aws
+  runtime: python3.6
+  region: eu-central-1
+  memorySize: 1024
+  timeout: 30
+
+functions:
+  lambda_runner:
+    handler: handler.lambda_runner
+    events:
+      - http:
+          path: lambda_runner
+          method: get
+    layers:
+      - ${cf:lambda-selenium-layer-dev.SeleniumLayerExport}
+      - ${cf:lambda-selenium-layer-dev.ChromedriverLayerExport}
+      - ${cf:lambda-selenium-layer-dev.ChromeLayerExport}
+      - ${cf:lambda-tests-layer-dev.FeaturesLayerExport}

@@ -1,0 +1,38 @@
+service: lambda-selenium-layer
+
+provider:
+  name: aws
+  runtime: python3.6
+  region: eu-central-1
+  timeout: 30
+
+layers:
+  selenium:
+    path: selenium
+    CompatibleRuntimes: [
+      "python3.6"
+    ]
+  chromedriver:
+    package:
+      artifact: chromedriver_241.zip
+  chrome:
+    package:
+      artifact: headless-chromium_52.zip
+
+resources:
+  Outputs:
+    SeleniumLayerExport:
+       Value:
+         Ref: SeleniumLambdaLayer
+       Export:
+         Name: SeleniumLambdaLayer
+    ChromedriverLayerExport:
+       Value:
+         Ref: ChromedriverLambdaLayer
+       Export:
+         Name: ChromedriverLambdaLayer
+    ChromeLayerExport:
+      Value:
+        Ref: ChromeLambdaLayer
+      Export:
+        Name: ChromeLambdaLayer
