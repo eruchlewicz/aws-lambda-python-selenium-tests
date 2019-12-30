@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e4e9722-af3b-41cf-9020-8b1a7b461379" name="Default Changelist" comment="POC">
-      <change afterPath="$PROJECT_DIR$/lambda/.serverless/cloudformation-template-create-stack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/.serverless/cloudformation-template-update-stack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/.serverless/lambda-test-runner.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/.serverless/serverless-state.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seleniumLayer/.serverless/cloudformation-template-create-stack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seleniumLayer/.serverless/cloudformation-template-update-stack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seleniumLayer/.serverless/selenium.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seleniumLayer/.serverless/serverless-state.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testList/.serverless/cloudformation-template-create-stack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testList/.serverless/cloudformation-template-update-stack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testList/.serverless/lambda-test-list.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testList/.serverless/serverless-state.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/.serverless/cloudformation-template-create-stack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/.serverless/cloudformation-template-update-stack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/.serverless/features.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/.serverless/serverless-state.json" afterDir="false" />
+    <list default="true" id="0e4e9722-af3b-41cf-9020-8b1a7b461379" name="Default Changelist" comment="Add Allure commandline">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/serverless.yml" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/serverless.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seleniumLayer/serverless.yml" beforeDir="false" afterPath="$PROJECT_DIR$/seleniumLayer/serverless.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testList/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/testList/handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testList/serverless.yml" beforeDir="false" afterPath="$PROJECT_DIR$/testList/serverless.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/features/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/features/environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/features/pages/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/features/pages/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/features/steps/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/features/steps/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/serverless.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/serverless.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,44 +21,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/features/pages/login.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/features/pages/base_page_object.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/features/pages/home.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="91" selection-start-line="21" selection-start-column="91" selection-end-line="21" selection-end-column="91" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -105,10 +62,8 @@
         <option value="$PROJECT_DIR$/tests/tests/features/tutorial.feature" />
         <option value="$PROJECT_DIR$/tests/tests/features/environment.py" />
         <option value="$PROJECT_DIR$/tests/tests/features/steps/step_definitions.py" />
-        <option value="$PROJECT_DIR$/tests/serverless.yml" />
         <option value="$PROJECT_DIR$/tests/features/behave.ini" />
         <option value="$PROJECT_DIR$/tests/features/tutorial3.feature" />
-        <option value="$PROJECT_DIR$/seleniumLayer/serverless.yml" />
         <option value="$PROJECT_DIR$/tests/features/steps/tutorial.py" />
         <option value="$PROJECT_DIR$/tests/features/tutorial2.feature" />
         <option value="$PROJECT_DIR$/tests/features/__init__.py" />
@@ -119,27 +74,30 @@
         <option value="$PROJECT_DIR$/lambda/test-set.yml" />
         <option value="$PROJECT_DIR$/tests/features/01.OpenLoginPage.feature" />
         <option value="$PROJECT_DIR$/tests/features/run.py" />
-        <option value="$PROJECT_DIR$/testList/serverless.yml" />
-        <option value="$PROJECT_DIR$/lambda/serverless.yml" />
         <option value="$PROJECT_DIR$/lambda/runner.py" />
-        <option value="$PROJECT_DIR$/lambda/handler.py" />
         <option value="$PROJECT_DIR$/tests/features/config.json" />
-        <option value="$PROJECT_DIR$/tests/features/environment.py" />
         <option value="$PROJECT_DIR$/tests/features/pages/home.py" />
-        <option value="$PROJECT_DIR$/tests/features/pages/login.py" />
-        <option value="$PROJECT_DIR$/tests/features/steps/login.py" />
         <option value="$PROJECT_DIR$/tests/features/pages/base_page_object.py" />
-        <option value="$PROJECT_DIR$/testList/handler.py" />
         <option value="$PROJECT_DIR$/tests/features/02.LoginToDJ.feature" />
         <option value="$PROJECT_DIR$/tests/features/02.LoginToSCI.feature" />
+        <option value="$PROJECT_DIR$/lambda/serverless.yml" />
+        <option value="$PROJECT_DIR$/testList/serverless.yml" />
+        <option value="$PROJECT_DIR$/tests/serverless.yml" />
+        <option value="$PROJECT_DIR$/seleniumLayer/serverless.yml" />
+        <option value="$PROJECT_DIR$/tests/features/environment.py" />
+        <option value="$PROJECT_DIR$/lambda/handler.py" />
+        <option value="$PROJECT_DIR$/testList/handler.py" />
+        <option value="$PROJECT_DIR$/tests/features/pages/login.py" />
+        <option value="$PROJECT_DIR$/tests/features/steps/login.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="865" />
-    <option name="y" value="-45" />
-    <option name="width" value="1450" />
-    <option name="height" value="785" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -169,6 +127,11 @@
               <item name="aws-lambda-python-selenium-tests" type="b2602c69:ProjectViewProjectNode" />
               <item name="aws-lambda-python-selenium-tests" type="462c0819:PsiDirectoryNode" />
               <item name="lambda" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aws-lambda-python-selenium-tests" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aws-lambda-python-selenium-tests" type="462c0819:PsiDirectoryNode" />
+              <item name="testList" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -387,13 +350,27 @@
       <option name="project" value="LOCAL" />
       <updated>1577475783612</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add Allure reports">
+      <created>1577711891585</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1577711891585</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add Allure commandline">
+      <created>1577717513247</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1577717513247</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.32034346" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4015852" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -404,7 +381,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32981783" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.41018388" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.27581328" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -412,26 +389,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32034346" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.29278642" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32885906" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32981783" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.41018388" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.feature" />
@@ -479,7 +436,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="POC" />
-    <option name="LAST_COMMIT_MESSAGE" value="POC" />
+    <MESSAGE value="Add Allure reports" />
+    <MESSAGE value="Add Allure commandline" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Allure commandline" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/selenium/webdriver/chrome/webdriver.py">
@@ -533,15 +492,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore" />
     <entry file="file://$PROJECT_DIR$/lambda/tests/test1.py" />
-    <entry file="file://$PROJECT_DIR$/tests/serverless.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/Nowy folder/steps/tutorial.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -557,13 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="34" column="37" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seleniumLayer/serverless.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -594,13 +538,6 @@
     <entry file="file://$PROJECT_DIR$/tests/features/failed_scenarios_screenshots/Login_failed.png" />
     <entry file="file://$PROJECT_DIR$/tests/features/run.py" />
     <entry file="file://$PROJECT_DIR$/lambda/test-set.yml" />
-    <entry file="file://$PROJECT_DIR$/lambda/serverless.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/behave/__main__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -608,21 +545,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testList/serverless.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lambda/runner.py" />
-    <entry file="file://$PROJECT_DIR$/tests/features/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/steps/home.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -634,27 +557,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/failed_scenarios_screenshots/Open login page_failed.png" />
-    <entry file="file://$PROJECT_DIR$/lambda/handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/debug.log" />
-    <entry file="file://$PROJECT_DIR$/testList/handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/02.LoginToSCI.feature" />
     <entry file="file://$PROJECT_DIR$/tests/features/01.OpenLoginPage.feature">
       <provider selected="true" editor-type-id="text-editor">
@@ -663,39 +566,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/features/environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="794">
-          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/features/steps/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/features/pages/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/pages/home.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="340">
           <caret line="21" column="91" selection-start-line="21" selection-start-column="91" selection-end-line="21" selection-end-column="91" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
@@ -710,6 +583,101 @@
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lambda/serverless.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seleniumLayer/serverless.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-272">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/serverless.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/features/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/features/environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testList/handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1921">
+          <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lambda/handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="36" column="34" lean-forward="true" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/features/02.LoginToDJ.feature">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testList/serverless.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/features/steps/login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/features/pages/login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
         </state>
       </provider>
     </entry>
