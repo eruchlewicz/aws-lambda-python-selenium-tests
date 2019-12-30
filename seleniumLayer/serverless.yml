@@ -18,6 +18,9 @@ layers:
   chrome:
     package:
       artifact: headless-chromium_52.zip
+  allure:
+    package:
+      artifact: allure-commandline_210.zip
 
 resources:
   Outputs:
@@ -36,3 +39,8 @@ resources:
         Ref: ChromeLambdaLayer
       Export:
         Name: ChromeLambdaLayer
+    AllureLayerExport:
+      Value:
+        Ref: AllureLambdaLayer
+      Export:
+        Name: AllureLambdaLayer

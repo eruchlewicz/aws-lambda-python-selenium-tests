@@ -35,7 +35,7 @@ def set_windows_driver(context):
     print("Running on Windows")
     options = Options()
     options.add_argument('--no-sandbox')
-    # options.add_argument('--headless')
+    options.add_argument('--headless')
     context.browser = webdriver.Chrome(os.path.dirname(os.getcwd()) + '/driver/chromedriver.exe',
                                        chrome_options=options)
 
@@ -64,7 +64,6 @@ def after_scenario(context, scenario):
             context.browser.save_screenshot('/tmp/' + file_name)
             s3 = boto3.resource(
                 's3',
-                region_name='eu-central-1',
                 aws_access_key_id='XXX',
                 aws_secret_access_key='YYY'
             )
