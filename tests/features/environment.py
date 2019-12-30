@@ -1,9 +1,10 @@
+import os
+import platform
+from datetime import date, datetime
+
+import boto3
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from datetime import date, datetime
-import boto3
-import platform
-import os
 
 
 def set_linux_driver(context):
@@ -63,9 +64,7 @@ def after_scenario(context, scenario):
             file_name = scenario.name + str(current_time) + ".png"
             context.browser.save_screenshot('/tmp/' + file_name)
             s3 = boto3.resource(
-                's3',
-                aws_access_key_id='XXX',
-                aws_secret_access_key='YYY'
+                's3'
             )
             s3.Bucket('failed-scenarios-screenshots').upload_file('/tmp/' + file_name,
                                                                   str(date.today()) + '/' + file_name)

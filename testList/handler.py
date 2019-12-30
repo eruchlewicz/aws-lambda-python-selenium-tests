@@ -1,13 +1,14 @@
-import boto3
 import argparse
-import json
 import base64
+import json
+import logging
 import os
 import shutil
-import logging
-from datetime import date, datetime
-from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 import subprocess
+from concurrent.futures import ThreadPoolExecutor as PoolExecutor
+from datetime import date, datetime
+
+import boto3
 
 
 def get_list():
@@ -23,18 +24,14 @@ def get_list():
 
 def get_s3_resource():
     s3 = boto3.resource(
-        's3',
-        aws_access_key_id='XXX',
-        aws_secret_access_key='YYY'
+        's3'
     )
     return s3
 
 
 def get_s3_client():
     client = boto3.client(
-        's3',
-        aws_access_key_id='XXX',
-        aws_secret_access_key='YYY'
+        's3'
     )
     return client
 
@@ -115,9 +112,7 @@ def lambda_test_list(event, context):
         create_report_folder_in_bucket(report_folder)
         client = boto3.client(
             'lambda',
-            region_name='eu-central-1',
-            aws_access_key_id='XXX',
-            aws_secret_access_key='YYY'
+            region_name='eu-west-1'
         )
 
         def invoke_test(tc_name):

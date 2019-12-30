@@ -1,10 +1,11 @@
-from behave.__main__ import main as behave_main
 import json
-import boto3
-import os
 import logging
-from selenium.webdriver.remote.remote_connection import LOGGER
+import os
 from datetime import datetime
+
+import boto3
+from behave.__main__ import main as behave_main
+from selenium.webdriver.remote.remote_connection import LOGGER
 
 
 def lambda_runner(event, context):
@@ -38,9 +39,7 @@ def lambda_runner(event, context):
     }
 
     s3 = boto3.resource(
-        's3',
-        aws_access_key_id='XXX',
-        aws_secret_access_key='YYY'
+        's3'
     )
 
     for file in os.listdir(results_location):
