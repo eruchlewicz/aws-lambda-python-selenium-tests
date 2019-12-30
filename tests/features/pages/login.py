@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+
 from .base_page_object import *
 
 
@@ -31,4 +32,7 @@ class LoginPage(BasePage):
         return self.logged_user.text.strip('Witaj, ')
 
     def after_logging_page_is_opened(self):
-        return self.page_title.text == 'Moje turnusy'
+        try:
+            return self.page_title.text == 'Moje turnusy'
+        except:
+            return False

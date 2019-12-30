@@ -18,8 +18,8 @@ def step_impl(context):
 @then('User is logged in')
 def step_impl(context):
     page = LoginPage(context)
-    print('User logged in as: ' + page.get_user_logged_in())
     assert page.after_logging_page_is_opened()
+    print('User logged in as: ' + page.get_user_logged_in())
 
 
 @then('Login page is opened')
