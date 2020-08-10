@@ -1,0 +1,31 @@
+service: lambda-test-list
+app: lambda-test-list
+
+provider:
+  name: aws
+  runtime: python3.6
+  region: eu-central-1
+  memorySize: 256
+  timeout: 500
+  iamManagedPolicies:
+    - "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
+    - "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+    - "arn:aws:iam::aws:policy/AWSLambdaExecute"
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeAsync
+        - lambda:InvokeFunction
+      Resource:
+        - arn:aws:lambda:eu-central-1:*:*
+
+functions:
+  lambda_test_list:
+    handler: handler.lambda_test_list
+    events:
+      - http:
+          path: lambda_test_list
+          method: get
+    layers:
+      - ${cf:lambda-tests-layer-dev.FeaturesLayerExport}
+      - ${cf:lambda-selenium-layer-dev.AllureLayerExport}

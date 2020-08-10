@@ -9,14 +9,13 @@ class LoginPage(BasePage):
         BasePage.__init__(
             self,
             context.browser,
-            base_url=get_url_from_config())
+            base_url=get_from_config('url'))
 
     locator_dictionary = {
-        "username_input": (By.XPATH, "//input[@name='username']"),
-        "password_input": (By.XPATH, "//input[@name='password']"),
-        "login_button": (By.ID, "login_btn"),
-        "page_title": (By.TAG_NAME, "h2"),
-        "logged_user": (By.XPATH, "//li/span[contains(text(), 'Witaj')]"),
+        'username_input': (By.XPATH, '//input[@name="username"]'),
+        'password_input': (By.XPATH, '//input[@name="password"]'),
+        'login_button': (By.ID, 'login_btn'),
+        'logged_user': (By.XPATH, '//li/span[contains(text(), "Witaj")]'),
     }
 
     def enter_username(self, username):
@@ -29,10 +28,4 @@ class LoginPage(BasePage):
         self.login_button.click()
 
     def get_user_logged_in(self):
-        return self.logged_user.text.strip('Witaj, ')
-
-    def after_logging_page_is_opened(self):
-        try:
-            return self.page_title.text == 'Moje turnusy'
-        except:
-            return False
+        return self.logged_user.text.strip('Witaj,')

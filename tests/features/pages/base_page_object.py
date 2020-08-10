@@ -1,38 +1,34 @@
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import *
-import traceback
 import time
-import json
-import platform
-import os
+import traceback
 
+from selenium.common.exceptions import *
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
-def get_from_config(what):
-    if 'Linux' in platform.system():
-        with open('/opt/config.json') as json_file:
-            data = json.load(json_file)
-            return data[what]
-    else:
-        with open(os.getcwd() + '/config.json') as json_file:
-            data = json.load(json_file)
-            return data[what]
-
-
-def get_url_from_config():
-    return get_from_config('url')
+from environment import get_from_config
 
 
 class BasePage(object):
 
-    def __init__(self, browser, base_url=get_url_from_config()):
+    def __init__(self, browser, base_url=get_from_config('url')):
         self.base_url = base_url
         self.browser = browser
         self.timeout = 10
 
     def find_element(self, *loc):
+        try:
+            WebDriverWait(self.browser, self.timeout).until(EC.presence_of_element_located(loc))
+        except Exception as e:
+            print("Element not found", e)
         return self.browser.find_element(*loc)
+
+    def find_elements(self, *loc):
+        try:
+            WebDriverWait(self.browser, self.timeout).until(EC.presence_of_element_located(loc))
+        except Exception as e:
+            print("Element not found", e)
+        return self.browser.find_elements(*loc)
 
     def visit(self, url):
         self.browser.get(url)
@@ -47,13 +43,6 @@ class BasePage(object):
                 try:
                     WebDriverWait(self.browser, self.timeout).until(
                         EC.presence_of_element_located(self.locator_dictionary[what])
-                    )
-                except(TimeoutException, StaleElementReferenceException):
-                    traceback.print_exc()
-
-                try:
-                    WebDriverWait(self.browser, self.timeout).until(
-                        EC.visibility_of_element_located(self.locator_dictionary[what])
                     )
                 except(TimeoutException, StaleElementReferenceException):
                     traceback.print_exc()

@@ -1,16 +1,11 @@
-from behave import *
-from pages.home import *
-from environment import *
+from behave import step
+
+from environment import get_from_config
+from pages import HomePage
 
 
-@given('Home page is opened')
+@step('Home page is opened')
 def step_impl(context):
     page = HomePage(context)
-    page.visit(get_url_from_config())
-    assert get_url_from_config() in context.browser.current_url
-
-
-@when('User opens Login page')
-def step_impl(context):
-    page = HomePage(context)
-    page.open_login_page()
+    page.visit(get_from_config('url'))
+    assert get_from_config('url') in context.browser.current_url
