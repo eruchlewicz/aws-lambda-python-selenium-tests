@@ -7,8 +7,7 @@ from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 from datetime import date, datetime
 
 import boto3
-import botocore
-from botocore.client import ClientError
+from botocore.client import ClientError, Config
 
 REPORTS_BUCKET = 'aws-selenium-test-reports'
 SCREENSHOTS_FOLDER = 'failed_scenarios_screenshots/'
@@ -32,7 +31,7 @@ def get_s3_resource():
 
 
 def get_s3_client():
-    return boto3.client('s3', config=botocore.client.Config(max_pool_connections=500))
+    return boto3.client('s3', config=Config(max_pool_connections=500))
 
 
 def remove_s3_folder(folder_name: str):
