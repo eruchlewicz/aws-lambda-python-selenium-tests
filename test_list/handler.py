@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 from datetime import date, datetime
 
 import boto3
+import botocore
 from botocore.client import ClientError
 
 REPORTS_BUCKET = 'aws-selenium-test-reports'
@@ -31,7 +32,7 @@ def get_s3_resource():
 
 
 def get_s3_client():
-    return boto3.client('s3')
+    return boto3.client('s3', config=botocore.client.Config(max_pool_connections=500))
 
 
 def remove_s3_folder(folder_name: str):
@@ -135,9 +136,13 @@ def lambda_test_list(event, context):
                 stats['failed'] += 1
                 stats['failed_tc'].append(tc_name)
 
-        with PoolExecutor(max_workers=500) as executor:
-            for _ in executor.map(invoke_test, test_cases):
-                pass
+        if event.get('seq'):
+            for tc in test_cases:
+                invoke_test(tc)
+        else:
+            with PoolExecutor(max_workers=500) as executor:
+                for _ in executor.map(invoke_test, test_cases):
+                    pass
 
         try:
             download_folder_from_bucket(bucket=REPORTS_BUCKET, dist=REPORTS_FOLDER)
@@ -153,9 +158,9 @@ def lambda_test_list(event, context):
             print(f'Error when generating report: {e}')
 
         return {
-            'Passed': stats['passed'],
+            'Passed or Skipped': stats['passed'],
             'Failed': stats['failed'],
-            'Passed TC': stats['passed_tc'],
+            'Passed or Skipped TC': stats['passed_tc'],
             'Failed TC': stats['failed_tc'],
             'Screenshots': f'https://s3.console.aws.amazon.com/s3/buckets/{REPORTS_BUCKET}/'
                            f'{SCREENSHOTS_FOLDER}{CURRENT_DATE}/',
