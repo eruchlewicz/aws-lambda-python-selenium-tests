@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from .base_page_object import *
 
 
-class CampsPage(BasePage):
+class RetreatsPage(BasePage):
 
     def __init__(self, context):
         BasePage.__init__(
@@ -12,13 +12,13 @@ class CampsPage(BasePage):
             base_url=get_from_config('url'))
 
     locator_dictionary = {
-        'camps_header': (By.XPATH, '//h2[text()="Moje turnusy"]'),
+        'retreats_header': (By.XPATH, '//h2[text()="Moje rekolekcje"]'),
         'signup_button': (By.XPATH, '//button[@type="submit" and contains(text(), "Zapisz się")]'),
     }
 
-    def camps_page_is_displayed(self):
+    def retreats_page_is_opened(self):
         try:
-            return self.camps_header.is_displayed()
+            return self.retreats_header.is_displayed()
         except:
             return False
 

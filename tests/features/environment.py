@@ -7,7 +7,7 @@ import boto3
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-REPORTS_BUCKET = 'selenium-test-reports'
+REPORTS_BUCKET = 'aws-selenium-test-reports'
 SCREENSHOTS_FOLDER = 'failed_scenarios_screenshots/'
 CURRENT_DATE = str(date.today())
 DATETIME_FORMAT = '%H_%M_%S'

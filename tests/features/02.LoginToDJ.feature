@@ -8,7 +8,7 @@ Feature: Login to DJ
     And User opens Login page
     When User enters credentials
     And User clicks Login button
-    Then Camp page is opened
+    Then Camps page is opened
 
   Scenario: Logout
     When User clicks Logout button
