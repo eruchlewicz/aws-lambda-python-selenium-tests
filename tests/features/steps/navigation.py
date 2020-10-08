@@ -55,3 +55,9 @@ def step_impl(context):
 def step_impl(context):
     page = NavigationPage(context)
     page.click_logout_button()
+
+
+@step("Logout button is displayed")
+def step_impl(context):
+    page = NavigationPage(context)
+    assert page.logout_button_is_displayed()

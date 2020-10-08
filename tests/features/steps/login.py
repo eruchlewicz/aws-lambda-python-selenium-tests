@@ -1,7 +1,7 @@
 from behave import step
 
 from environment import get_from_config
-from pages import LoginPage, HomePage, NavigationPage
+from pages import LoginPage, HomePage, NavigationPage, CampsPage
 
 
 @step('User enters credentials')
@@ -32,3 +32,5 @@ def step_impl(context):
     login_page.enter_username(get_from_config('username'))
     login_page.enter_password(get_from_config('password'))
     login_page.click_login_button()
+    camps_page = CampsPage(context)
+    assert camps_page.camps_page_is_displayed()

@@ -13,9 +13,10 @@ REPORTS_BUCKET = 'aws-selenium-test-reports'
 SCREENSHOTS_FOLDER = 'failed_scenarios_screenshots/'
 CURRENT_DATE = str(date.today())
 REPORTS_FOLDER = 'tmp_reports/'
+HISTORY_FOLDER = 'history/'
 TMP_REPORTS_FOLDER = f'/tmp/{REPORTS_FOLDER}'
 TMP_REPORTS_ALLURE_FOLDER = f'{TMP_REPORTS_FOLDER}Allure/'
-TMP_REPORTS_ALLURE_HISTORY_FOLDER = f'{TMP_REPORTS_ALLURE_FOLDER}history/'
+TMP_REPORTS_ALLURE_HISTORY_FOLDER = f'{TMP_REPORTS_ALLURE_FOLDER}{HISTORY_FOLDER}'
 REGION = 'eu-central-1'
 
 logger = logging.getLogger()
@@ -31,7 +32,7 @@ def get_s3_resource():
 
 
 def get_s3_client():
-    return boto3.client('s3', config=Config(max_pool_connections=500))
+    return boto3.client('s3', config=Config(read_timeout=900, connect_timeout=900, max_pool_connections=500))
 
 
 def remove_s3_folder(folder_name: str):
@@ -82,7 +83,7 @@ def upload_report_history_to_s3():
     os.chdir(TMP_REPORTS_ALLURE_HISTORY_FOLDER)
     for file in os.listdir(TMP_REPORTS_ALLURE_HISTORY_FOLDER):
         if file.endswith('.json'):
-            s3.Bucket(REPORTS_BUCKET).upload_file(file, f'history/{file}')
+            s3.Bucket(REPORTS_BUCKET).upload_file(file, f'{HISTORY_FOLDER}{file}')
     os.chdir(current_path)
 
 
@@ -112,7 +113,11 @@ def lambda_test_list(event, context):
         )
         remove_s3_folder(folder_name=REPORTS_FOLDER)
         create_folder(bucket_name=REPORTS_BUCKET, folder_name=REPORTS_FOLDER)
-        client = boto3.client('lambda', region_name=REGION)
+        client = boto3.client(
+            'lambda',
+            region_name=REGION,
+            config=Config(read_timeout=900, connect_timeout=900, max_pool_connections=500)
+        )
 
         stats = {'passed': 0, 'failed': 0, 'passed_tc': [], 'failed_tc': []}
 
@@ -145,7 +150,7 @@ def lambda_test_list(event, context):
 
         try:
             download_folder_from_bucket(bucket=REPORTS_BUCKET, dist=REPORTS_FOLDER)
-            download_folder_from_bucket(bucket=REPORTS_BUCKET, dist='history/', local=TMP_REPORTS_FOLDER)
+            download_folder_from_bucket(bucket=REPORTS_BUCKET, dist=HISTORY_FOLDER, local=TMP_REPORTS_FOLDER)
             command_generate_allure_report = [
                 f'/opt/allure-2.10.0/bin/allure generate --clean {TMP_REPORTS_FOLDER} -o {TMP_REPORTS_ALLURE_FOLDER}'
             ]
@@ -153,6 +158,7 @@ def lambda_test_list(event, context):
             upload_html_report_to_s3(report_path=TMP_REPORTS_ALLURE_FOLDER)
             upload_report_history_to_s3()
             remove_s3_folder(REPORTS_FOLDER)
+            subprocess.call('rm -rf /tmp/*', shell=True)
         except Exception as e:
             print(f'Error when generating report: {e}')
 

@@ -2,6 +2,7 @@ import json
 import logging
 import os
 from datetime import datetime
+from subprocess import call
 
 import boto3
 from behave.__main__ import main as behave_main
@@ -32,7 +33,6 @@ def get_run_args(event, results_location):
 
 
 def lambda_runner(event, context):
-    test_result = True
     suffix = datetime.now().strftime(DATETIME_FORMAT)
     results_location = f'/tmp/result_{suffix}'
     run_args = get_run_args(event, results_location)
@@ -41,8 +41,7 @@ def lambda_runner(event, context):
 
     try:
         return_code = behave_main(run_args)
-        if return_code == 1:
-            test_result = False
+        test_result = False if return_code == 1 else True
 
     except Exception as e:
         print(e)
@@ -55,6 +54,8 @@ def lambda_runner(event, context):
     for file in os.listdir(results_location):
         if file.endswith('.json'):
             s3.Bucket(REPORTS_BUCKET).upload_file(f'{results_location}/{file}', f'tmp_reports/{file}')
+
+    call(f'rm -rf {results_location}', shell=True)
 
     return {
         'statusCode': 200,

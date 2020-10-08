@@ -5,8 +5,8 @@ provider:
   name: aws
   runtime: python3.6
   region: eu-central-1
-  memorySize: 516
-  timeout: 500
+  memorySize: 512
+  timeout: 900
   iamManagedPolicies:
     - "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
     - "arn:aws:iam::aws:policy/AmazonS3FullAccess"

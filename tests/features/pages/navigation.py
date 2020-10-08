@@ -53,3 +53,9 @@ class NavigationPage(BasePage):
             self.login_button.click()
         except:
             print(f'User is already logged in as: {self.logged_user.text.strip("Witaj, ")}')
+
+    def logout_button_is_displayed(self):
+        try:
+            return self.logout_button.is_displayed()
+        except:
+            return False
