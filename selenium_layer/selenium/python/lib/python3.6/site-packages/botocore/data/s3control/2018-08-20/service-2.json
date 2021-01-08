@@ -11,6 +11,19 @@
     "uid":"s3control-2018-08-20"
   },
   "operations":{
+    "CreateAccessPoint":{
+      "name":"CreateAccessPoint",
+      "http":{
+        "method":"PUT",
+        "requestUri":"/v20180820/accesspoint/{name}"
+      },
+      "input":{
+        "shape":"CreateAccessPointRequest",
+        "locationName":"CreateAccessPointRequest",
+        "xmlNamespace":{"uri":"http://awss3control.amazonaws.com/doc/2018-08-20/"}
+      },
+      "documentation":"<p>Creates an access point and associates it with the specified bucket.</p>"
+    },
     "CreateJob":{
       "name":"CreateJob",
       "http":{
@@ -29,7 +42,40 @@
         {"shape":"IdempotencyException"},
         {"shape":"InternalServiceException"}
       ],
-      "documentation":"<p>Creates an Amazon S3 batch operations job.</p>"
+      "documentation":"<p>You can use Amazon S3 Batch Operations to perform large-scale Batch Operations on Amazon S3 objects. Amazon S3 Batch Operations can execute a single operation or action on lists of Amazon S3 objects that you specify. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html\">Amazon S3 Batch Operations</a> in the Amazon Simple Storage Service Developer Guide.</p> <p>Related actions include:</p> <ul> <li> <p> <a>DescribeJob</a> </p> </li> <li> <p> <a>ListJobs</a> </p> </li> <li> <p> <a>UpdateJobPriority</a> </p> </li> <li> <p> <a>UpdateJobStatus</a> </p> </li> </ul>"
+    },
+    "DeleteAccessPoint":{
+      "name":"DeleteAccessPoint",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/v20180820/accesspoint/{name}"
+      },
+      "input":{"shape":"DeleteAccessPointRequest"},
+      "documentation":"<p>Deletes the specified access point.</p>"
+    },
+    "DeleteAccessPointPolicy":{
+      "name":"DeleteAccessPointPolicy",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/v20180820/accesspoint/{name}/policy"
+      },
+      "input":{"shape":"DeleteAccessPointPolicyRequest"},
+      "documentation":"<p>Deletes the access point policy for the specified access point.</p>"
+    },
+    "DeleteJobTagging":{
+      "name":"DeleteJobTagging",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/v20180820/jobs/{id}/tagging"
+      },
+      "input":{"shape":"DeleteJobTaggingRequest"},
+      "output":{"shape":"DeleteJobTaggingResult"},
+      "errors":[
+        {"shape":"InternalServiceException"},
+        {"shape":"TooManyRequestsException"},
+        {"shape":"NotFoundException"}
+      ],
+      "documentation":"<p>Removes the entire tag set from the specified Amazon S3 Batch Operations job. To use this operation, you must have permission to perform the <code>s3:DeleteJobTagging</code> action. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags\">Using Job Tags</a> in the Amazon Simple Storage Service Developer Guide.</p> <p/> <p>Related actions include:</p> <ul> <li> <p> <a>CreateJob</a> </p> </li> <li> <p> <a>GetJobTagging</a> </p> </li> <li> <p> <a>PutJobTagging</a> </p> </li> </ul>"
     },
     "DeletePublicAccessBlock":{
       "name":"DeletePublicAccessBlock",
@@ -38,7 +84,7 @@
         "requestUri":"/v20180820/configuration/publicAccessBlock"
       },
       "input":{"shape":"DeletePublicAccessBlockRequest"},
-      "documentation":"<p>Deletes the block public access configuration for the specified account.</p>"
+      "documentation":"<p>Removes the <code>PublicAccessBlock</code> configuration for an Amazon Web Services account.</p>"
     },
     "DescribeJob":{
       "name":"DescribeJob",
@@ -54,7 +100,52 @@
         {"shape":"NotFoundException"},
         {"shape":"InternalServiceException"}
       ],
-      "documentation":"<p>Retrieves the configuration parameters and status for a batch operations job.</p>"
+      "documentation":"<p>Retrieves the configuration parameters and status for a Batch Operations job. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html\">Amazon S3 Batch Operations</a> in the Amazon Simple Storage Service Developer Guide.</p> <p/> <p>Related actions include:</p> <ul> <li> <p> <a>CreateJob</a> </p> </li> <li> <p> <a>ListJobs</a> </p> </li> <li> <p> <a>UpdateJobPriority</a> </p> </li> <li> <p> <a>UpdateJobStatus</a> </p> </li> </ul>"
+    },
+    "GetAccessPoint":{
+      "name":"GetAccessPoint",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v20180820/accesspoint/{name}"
+      },
+      "input":{"shape":"GetAccessPointRequest"},
+      "output":{"shape":"GetAccessPointResult"},
+      "documentation":"<p>Returns configuration information about the specified access point.</p>"
+    },
+    "GetAccessPointPolicy":{
+      "name":"GetAccessPointPolicy",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v20180820/accesspoint/{name}/policy"
+      },
+      "input":{"shape":"GetAccessPointPolicyRequest"},
+      "output":{"shape":"GetAccessPointPolicyResult"},
+      "documentation":"<p>Returns the access point policy associated with the specified access point.</p>"
+    },
+    "GetAccessPointPolicyStatus":{
+      "name":"GetAccessPointPolicyStatus",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v20180820/accesspoint/{name}/policyStatus"
+      },
+      "input":{"shape":"GetAccessPointPolicyStatusRequest"},
+      "output":{"shape":"GetAccessPointPolicyStatusResult"},
+      "documentation":"<p>Indicates whether the specified access point currently has a policy that allows public access. For more information about public access through access points, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html\">Managing Data Access with Amazon S3 Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>"
+    },
+    "GetJobTagging":{
+      "name":"GetJobTagging",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v20180820/jobs/{id}/tagging"
+      },
+      "input":{"shape":"GetJobTaggingRequest"},
+      "output":{"shape":"GetJobTaggingResult"},
+      "errors":[
+        {"shape":"InternalServiceException"},
+        {"shape":"TooManyRequestsException"},
+        {"shape":"NotFoundException"}
+      ],
+      "documentation":"<p>Returns the tags on an Amazon S3 Batch Operations job. To use this operation, you must have permission to perform the <code>s3:GetJobTagging</code> action. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags\">Using Job Tags</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p> <p/> <p>Related actions include:</p> <ul> <li> <p> <a>CreateJob</a> </p> </li> <li> <p> <a>PutJobTagging</a> </p> </li> <li> <p> <a>DeleteJobTagging</a> </p> </li> </ul>"
     },
     "GetPublicAccessBlock":{
       "name":"GetPublicAccessBlock",
@@ -67,7 +158,17 @@
       "errors":[
         {"shape":"NoSuchPublicAccessBlockConfiguration"}
       ],
-      "documentation":"<p/>"
+      "documentation":"<p>Retrieves the <code>PublicAccessBlock</code> configuration for an Amazon Web Services account.</p>"
+    },
+    "ListAccessPoints":{
+      "name":"ListAccessPoints",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v20180820/accesspoint"
+      },
+      "input":{"shape":"ListAccessPointsRequest"},
+      "output":{"shape":"ListAccessPointsResult"},
+      "documentation":"<p>Returns a list of the access points currently associated with the specified bucket. You can retrieve up to 1000 access points per call. If the specified bucket has more than 1,000 access points (or the number specified in <code>maxResults</code>, whichever is less), the response will include a continuation token that you can use to list the additional access points.</p>"
     },
     "ListJobs":{
       "name":"ListJobs",
@@ -82,7 +183,40 @@
         {"shape":"InternalServiceException"},
         {"shape":"InvalidNextTokenException"}
       ],
-      "documentation":"<p>Lists current jobs and jobs that have ended within the last 30 days for the AWS account making the request.</p>"
+      "documentation":"<p>Lists current Amazon S3 Batch Operations jobs and jobs that have ended within the last 30 days for the AWS account making the request. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html\">Amazon S3 Batch Operations</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p> <p>Related actions include:</p> <p/> <ul> <li> <p> <a>CreateJob</a> </p> </li> <li> <p> <a>DescribeJob</a> </p> </li> <li> <p> <a>UpdateJobPriority</a> </p> </li> <li> <p> <a>UpdateJobStatus</a> </p> </li> </ul>"
+    },
+    "PutAccessPointPolicy":{
+      "name":"PutAccessPointPolicy",
+      "http":{
+        "method":"PUT",
+        "requestUri":"/v20180820/accesspoint/{name}/policy"
+      },
+      "input":{
+        "shape":"PutAccessPointPolicyRequest",
+        "locationName":"PutAccessPointPolicyRequest",
+        "xmlNamespace":{"uri":"http://awss3control.amazonaws.com/doc/2018-08-20/"}
+      },
+      "documentation":"<p>Associates an access policy with the specified access point. Each access point can have only one policy, so a request made to this API replaces any existing policy associated with the specified access point.</p>"
+    },
+    "PutJobTagging":{
+      "name":"PutJobTagging",
+      "http":{
+        "method":"PUT",
+        "requestUri":"/v20180820/jobs/{id}/tagging"
+      },
+      "input":{
+        "shape":"PutJobTaggingRequest",
+        "locationName":"PutJobTaggingRequest",
+        "xmlNamespace":{"uri":"http://awss3control.amazonaws.com/doc/2018-08-20/"}
+      },
+      "output":{"shape":"PutJobTaggingResult"},
+      "errors":[
+        {"shape":"InternalServiceException"},
+        {"shape":"TooManyRequestsException"},
+        {"shape":"NotFoundException"},
+        {"shape":"TooManyTagsException"}
+      ],
+      "documentation":"<p>Set the supplied tag-set on an Amazon S3 Batch Operations job.</p> <p>A tag is a key-value pair. You can associate Amazon S3 Batch Operations tags with any job by sending a PUT request against the tagging subresource that is associated with the job. To modify the existing tag set, you can either replace the existing tag set entirely, or make changes within the existing tag set by retrieving the existing tag set using <a>GetJobTagging</a>, modify that tag set, and use this API action to replace the tag set with the one you have modified.. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags\">Using Job Tags</a> in the Amazon Simple Storage Service Developer Guide. </p> <p/> <note> <ul> <li> <p>If you send this request with an empty tag set, Amazon S3 deletes the existing tag set on the Batch Operations job. If you use this method, you will be charged for a Tier 1 Request (PUT). For more information, see <a href=\"http://aws.amazon.com/s3/pricing/\">Amazon S3 pricing</a>.</p> </li> <li> <p>For deleting existing tags for your batch operations job, <a>DeleteJobTagging</a> request is preferred because it achieves the same result without incurring charges.</p> </li> <li> <p>A few things to consider about using tags:</p> <ul> <li> <p>Amazon S3 limits the maximum number of tags to 50 tags per job.</p> </li> <li> <p>You can associate up to 50 tags with a job as long as they have unique tag keys.</p> </li> <li> <p>A tag key can be up to 128 Unicode characters in length, and tag values can be up to 256 Unicode characters in length.</p> </li> <li> <p>The key and values are case sensitive.</p> </li> <li> <p>For tagging-related restrictions related to characters and encodings, see <a href=\"https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html\">User-Defined Tag Restrictions</a>.</p> </li> </ul> </li> </ul> </note> <p/> <p>To use this operation, you must have permission to perform the <code>s3:PutJobTagging</code> action.</p> <p>Related actions include:</p> <ul> <li> <p> <a>CreateJob</a> </p> </li> <li> <p> <a>GetJobTagging</a> </p> </li> <li> <p> <a>DeleteJobTagging</a> </p> </li> </ul>"
     },
     "PutPublicAccessBlock":{
       "name":"PutPublicAccessBlock",
@@ -91,7 +225,7 @@
         "requestUri":"/v20180820/configuration/publicAccessBlock"
       },
       "input":{"shape":"PutPublicAccessBlockRequest"},
-      "documentation":"<p/>"
+      "documentation":"<p>Creates or modifies the <code>PublicAccessBlock</code> configuration for an Amazon Web Services account.</p>"
     },
     "UpdateJobPriority":{
       "name":"UpdateJobPriority",
@@ -107,7 +241,7 @@
         {"shape":"NotFoundException"},
         {"shape":"InternalServiceException"}
       ],
-      "documentation":"<p>Updates an existing job's priority.</p>"
+      "documentation":"<p>Updates an existing Amazon S3 Batch Operations job's priority. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html\">Amazon S3 Batch Operations</a> in the Amazon Simple Storage Service Developer Guide.</p> <p/> <p>Related actions include:</p> <ul> <li> <p> <a>CreateJob</a> </p> </li> <li> <p> <a>ListJobs</a> </p> </li> <li> <p> <a>DescribeJob</a> </p> </li> <li> <p> <a>UpdateJobStatus</a> </p> </li> </ul>"
     },
     "UpdateJobStatus":{
       "name":"UpdateJobStatus",
@@ -124,13 +258,53 @@
         {"shape":"JobStatusException"},
         {"shape":"InternalServiceException"}
       ],
-      "documentation":"<p>Updates the status for the specified job. Use this operation to confirm that you want to run a job or to cancel an existing job.</p>"
+      "documentation":"<p>Updates the status for the specified job. Use this operation to confirm that you want to run a job or to cancel an existing job. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html\">Amazon S3 Batch Operations</a> in the Amazon Simple Storage Service Developer Guide.</p> <p/> <p>Related actions include:</p> <ul> <li> <p> <a>CreateJob</a> </p> </li> <li> <p> <a>ListJobs</a> </p> </li> <li> <p> <a>DescribeJob</a> </p> </li> <li> <p> <a>UpdateJobStatus</a> </p> </li> </ul>"
     }
   },
   "shapes":{
+    "AccessPoint":{
+      "type":"structure",
+      "required":[
+        "Name",
+        "NetworkOrigin",
+        "Bucket"
+      ],
+      "members":{
+        "Name":{
+          "shape":"AccessPointName",
+          "documentation":"<p>The name of this access point.</p>"
+        },
+        "NetworkOrigin":{
+          "shape":"NetworkOrigin",
+          "documentation":"<p>Indicates whether this access point allows access from the public internet. If <code>VpcConfiguration</code> is specified for this access point, then <code>NetworkOrigin</code> is <code>VPC</code>, and the access point doesn't allow access from the public internet. Otherwise, <code>NetworkOrigin</code> is <code>Internet</code>, and the access point allows access from the public internet, subject to the access point and bucket access policies.</p>"
+        },
+        "VpcConfiguration":{
+          "shape":"VpcConfiguration",
+          "documentation":"<p>The virtual private cloud (VPC) configuration for this access point, if one exists.</p>"
+        },
+        "Bucket":{
+          "shape":"BucketName",
+          "documentation":"<p>The name of the bucket associated with this access point.</p>"
+        }
+      },
+      "documentation":"<p>An access point used to access a bucket.</p>"
+    },
+    "AccessPointList":{
+      "type":"list",
+      "member":{
+        "shape":"AccessPoint",
+        "locationName":"AccessPoint"
+      }
+    },
+    "AccessPointName":{
+      "type":"string",
+      "max":50,
+      "min":3
+    },
     "AccountId":{
       "type":"string",
-      "max":64
+      "max":64,
+      "pattern":"^\\d{12}$"
     },
     "BadRequestException":{
       "type":"structure",
@@ -141,7 +315,43 @@
       "exception":true
     },
     "Boolean":{"type":"boolean"},
+    "BucketName":{
+      "type":"string",
+      "max":255,
+      "min":3
+    },
     "ConfirmationRequired":{"type":"boolean"},
+    "CreateAccessPointRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "Name",
+        "Bucket"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The AWS account ID for the owner of the bucket for which you want to create an access point.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "Name":{
+          "shape":"AccessPointName",
+          "documentation":"<p>The name you want to assign to this access point.</p>",
+          "location":"uri",
+          "locationName":"name"
+        },
+        "Bucket":{
+          "shape":"BucketName",
+          "documentation":"<p>The name of the bucket that you want to associate this access point with.</p>"
+        },
+        "VpcConfiguration":{
+          "shape":"VpcConfiguration",
+          "documentation":"<p>If you include this field, Amazon S3 restricts access to this access point to requests from the specified virtual private cloud (VPC).</p>"
+        },
+        "PublicAccessBlockConfiguration":{"shape":"PublicAccessBlockConfiguration"}
+      }
+    },
     "CreateJobRequest":{
       "type":"structure",
       "required":[
@@ -193,7 +403,11 @@
         },
         "RoleArn":{
           "shape":"IAMRoleArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for the Identity and Access Management (IAM) Role that batch operations will use to execute this job's operation on each object in the manifest.</p>"
+          "documentation":"<p>The Amazon Resource Name (ARN) for the AWS Identity and Access Management (IAM) role that Batch Operations will use to execute this job's operation on each object in the manifest.</p>"
+        },
+        "Tags":{
+          "shape":"S3TagSet",
+          "documentation":"<p>A set of tags to associate with the Amazon S3 Batch Operations job. This is an optional parameter. </p>"
         }
       }
     },
@@ -206,13 +420,82 @@
         }
       }
     },
+    "CreationDate":{"type":"timestamp"},
+    "DeleteAccessPointPolicyRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "Name"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The account ID for the account that owns the specified access point.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "Name":{
+          "shape":"AccessPointName",
+          "documentation":"<p>The name of the access point whose policy you want to delete.</p>",
+          "location":"uri",
+          "locationName":"name"
+        }
+      }
+    },
+    "DeleteAccessPointRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "Name"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The account ID for the account that owns the specified access point.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "Name":{
+          "shape":"AccessPointName",
+          "documentation":"<p>The name of the access point you want to delete.</p>",
+          "location":"uri",
+          "locationName":"name"
+        }
+      }
+    },
+    "DeleteJobTaggingRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "JobId"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The AWS account ID associated with the Amazon S3 Batch Operations job.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "JobId":{
+          "shape":"JobId",
+          "documentation":"<p>The ID for the Amazon S3 Batch Operations job whose tags you want to delete.</p>",
+          "location":"uri",
+          "locationName":"id"
+        }
+      }
+    },
+    "DeleteJobTaggingResult":{
+      "type":"structure",
+      "members":{
+      }
+    },
     "DeletePublicAccessBlockRequest":{
       "type":"structure",
       "required":["AccountId"],
       "members":{
         "AccountId":{
           "shape":"AccountId",
-          "documentation":"<p>The account ID for the AWS account whose block public access configuration you want to delete.</p>",
+          "documentation":"<p>The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you want to remove.</p>",
           "location":"header",
           "locationName":"x-amz-account-id"
         }
@@ -253,12 +536,155 @@
       "max":1024,
       "min":1
     },
+    "FunctionArnString":{
+      "type":"string",
+      "max":1024,
+      "min":1,
+      "pattern":"(arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\\d{1}:)?(\\d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(\\$LATEST|[a-zA-Z0-9-_]+))?"
+    },
+    "GetAccessPointPolicyRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "Name"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The account ID for the account that owns the specified access point.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "Name":{
+          "shape":"AccessPointName",
+          "documentation":"<p>The name of the access point whose policy you want to retrieve.</p>",
+          "location":"uri",
+          "locationName":"name"
+        }
+      }
+    },
+    "GetAccessPointPolicyResult":{
+      "type":"structure",
+      "members":{
+        "Policy":{
+          "shape":"Policy",
+          "documentation":"<p>The access point policy associated with the specified access point.</p>"
+        }
+      }
+    },
+    "GetAccessPointPolicyStatusRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "Name"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The account ID for the account that owns the specified access point.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "Name":{
+          "shape":"AccessPointName",
+          "documentation":"<p>The name of the access point whose policy status you want to retrieve.</p>",
+          "location":"uri",
+          "locationName":"name"
+        }
+      }
+    },
+    "GetAccessPointPolicyStatusResult":{
+      "type":"structure",
+      "members":{
+        "PolicyStatus":{
+          "shape":"PolicyStatus",
+          "documentation":"<p>Indicates the current policy status of the specified access point.</p>"
+        }
+      }
+    },
+    "GetAccessPointRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "Name"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The account ID for the account that owns the specified access point.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "Name":{
+          "shape":"AccessPointName",
+          "documentation":"<p>The name of the access point whose configuration information you want to retrieve.</p>",
+          "location":"uri",
+          "locationName":"name"
+        }
+      }
+    },
+    "GetAccessPointResult":{
+      "type":"structure",
+      "members":{
+        "Name":{
+          "shape":"AccessPointName",
+          "documentation":"<p>The name of the specified access point.</p>"
+        },
+        "Bucket":{
+          "shape":"BucketName",
+          "documentation":"<p>The name of the bucket associated with the specified access point.</p>"
+        },
+        "NetworkOrigin":{
+          "shape":"NetworkOrigin",
+          "documentation":"<p>Indicates whether this access point allows access from the public internet. If <code>VpcConfiguration</code> is specified for this access point, then <code>NetworkOrigin</code> is <code>VPC</code>, and the access point doesn't allow access from the public internet. Otherwise, <code>NetworkOrigin</code> is <code>Internet</code>, and the access point allows access from the public internet, subject to the access point and bucket access policies.</p>"
+        },
+        "VpcConfiguration":{
+          "shape":"VpcConfiguration",
+          "documentation":"<p>Contains the virtual private cloud (VPC) configuration for the specified access point.</p>"
+        },
+        "PublicAccessBlockConfiguration":{"shape":"PublicAccessBlockConfiguration"},
+        "CreationDate":{
+          "shape":"CreationDate",
+          "documentation":"<p>The date and time when the specified access point was created.</p>"
+        }
+      }
+    },
+    "GetJobTaggingRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "JobId"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The AWS account ID associated with the Amazon S3 Batch Operations job.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "JobId":{
+          "shape":"JobId",
+          "documentation":"<p>The ID for the Amazon S3 Batch Operations job whose tags you want to retrieve.</p>",
+          "location":"uri",
+          "locationName":"id"
+        }
+      }
+    },
+    "GetJobTaggingResult":{
+      "type":"structure",
+      "members":{
+        "Tags":{
+          "shape":"S3TagSet",
+          "documentation":"<p>The set of tags associated with the Amazon S3 Batch Operations job.</p>"
+        }
+      }
+    },
     "GetPublicAccessBlockOutput":{
       "type":"structure",
       "members":{
         "PublicAccessBlockConfiguration":{
           "shape":"PublicAccessBlockConfiguration",
-          "documentation":"<p/>"
+          "documentation":"<p>The <code>PublicAccessBlock</code> configuration currently in effect for this Amazon Web Services account.</p>"
         }
       },
       "payload":"PublicAccessBlockConfiguration"
@@ -269,7 +695,7 @@
       "members":{
         "AccountId":{
           "shape":"AccountId",
-          "documentation":"<p/>",
+          "documentation":"<p>The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you want to retrieve.</p>",
           "location":"header",
           "locationName":"x-amz-account-id"
         }
@@ -278,7 +704,8 @@
     "IAMRoleArn":{
       "type":"string",
       "max":2048,
-      "min":1
+      "min":1,
+      "pattern":"arn:[^:]+:iam::\\d{12}:role/.*"
     },
     "IdempotencyException":{
       "type":"structure",
@@ -313,10 +740,12 @@
       "documentation":"<p/>",
       "exception":true
     },
+    "IsPublic":{"type":"boolean"},
     "JobArn":{
       "type":"string",
       "max":1024,
-      "min":1
+      "min":1,
+      "pattern":"arn:[^:]+:s3:[a-zA-Z0-9\\-]+:\\d{12}:job\\/.*"
     },
     "JobCreationTime":{"type":"timestamp"},
     "JobDescriptor":{
@@ -390,7 +819,7 @@
         },
         "RoleArn":{
           "shape":"IAMRoleArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for the Identity and Access Management (IAM) Role assigned to execute the tasks for this job.</p>",
+          "documentation":"<p>The Amazon Resource Name (ARN) for the AWS Identity and Access Management (IAM) role assigned to execute the tasks for this job.</p>",
           "box":true
         },
         "SuspendedDate":{
@@ -437,7 +866,8 @@
     "JobId":{
       "type":"string",
       "max":36,
-      "min":5
+      "min":5,
+      "pattern":"[a-zA-Z0-9\\-\\_]+"
     },
     "JobListDescriptor":{
       "type":"structure",
@@ -593,6 +1023,14 @@
           "shape":"S3InitiateRestoreObjectOperation",
           "documentation":"<p>Directs the specified job to execute an Initiate Glacier Restore call on each object in the manifest.</p>",
           "box":true
+        },
+        "S3PutObjectLegalHold":{
+          "shape":"S3SetObjectLegalHoldOperation",
+          "box":true
+        },
+        "S3PutObjectRetention":{
+          "shape":"S3SetObjectRetentionOperation",
+          "box":true
         }
       },
       "documentation":"<p>The operation that you want this job to perform on each object listed in the manifest. For more information about the available operations, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-operations.html\">Available Operations</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>"
@@ -629,7 +1067,7 @@
       "members":{
         "Bucket":{
           "shape":"S3BucketArnString",
-          "documentation":"<p>The bucket where specified job-completion report will be stored.</p>",
+          "documentation":"<p>The Amazon Resource Name (ARN) for the bucket where specified job-completion report will be stored.</p>",
           "box":true
         },
         "Format":{
@@ -714,11 +1152,54 @@
       "type":"structure",
       "members":{
         "FunctionArn":{
-          "shape":"NonEmptyMaxLength1024String",
+          "shape":"FunctionArnString",
           "documentation":"<p>The Amazon Resource Name (ARN) for the AWS Lambda function that the specified job will invoke for each object in the manifest.</p>"
         }
       },
       "documentation":"<p>Contains the configuration parameters for a <code>Lambda Invoke</code> operation.</p>"
+    },
+    "ListAccessPointsRequest":{
+      "type":"structure",
+      "required":["AccountId"],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The AWS account ID for owner of the bucket whose access points you want to list.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "Bucket":{
+          "shape":"BucketName",
+          "documentation":"<p>The name of the bucket whose associated access points you want to list.</p>",
+          "location":"querystring",
+          "locationName":"bucket"
+        },
+        "NextToken":{
+          "shape":"NonEmptyMaxLength1024String",
+          "documentation":"<p>A continuation token. If a previous call to <code>ListAccessPoints</code> returned a continuation token in the <code>NextToken</code> field, then providing that value here causes Amazon S3 to retrieve the next page of results.</p>",
+          "location":"querystring",
+          "locationName":"nextToken"
+        },
+        "MaxResults":{
+          "shape":"MaxResults",
+          "documentation":"<p>The maximum number of access points that you want to include in the list. If the specified bucket has more than this number of access points, then the response will include a continuation token in the <code>NextToken</code> field that you can use to retrieve the next page of access points.</p>",
+          "location":"querystring",
+          "locationName":"maxResults"
+        }
+      }
+    },
+    "ListAccessPointsResult":{
+      "type":"structure",
+      "members":{
+        "AccessPointList":{
+          "shape":"AccessPointList",
+          "documentation":"<p>Contains identification and configuration information for one or more access points associated with the specified bucket.</p>"
+        },
+        "NextToken":{
+          "shape":"NonEmptyMaxLength1024String",
+          "documentation":"<p>If the specified bucket has more access points than can be returned in one call to this API, then this field contains a continuation token that you can provide in subsequent calls to this API to retrieve additional access points.</p>"
+        }
+      }
     },
     "ListJobsRequest":{
       "type":"structure",
@@ -737,7 +1218,7 @@
           "locationName":"jobStatuses"
         },
         "NextToken":{
-          "shape":"NonEmptyMaxLength1024String",
+          "shape":"StringForNextToken",
           "documentation":"<p>A pagination token to request the next page of results. Use the token that Amazon S3 returned in the <code>NextToken</code> element of the <code>ListJobsResult</code> from the previous <code>List Jobs</code> request.</p>",
           "location":"querystring",
           "locationName":"nextToken"
@@ -755,7 +1236,7 @@
       "type":"structure",
       "members":{
         "NextToken":{
-          "shape":"NonEmptyMaxLength1024String",
+          "shape":"StringForNextToken",
           "documentation":"<p>If the <code>List Jobs</code> request produced more than the maximum number of results, you can pass this value into a subsequent <code>List Jobs</code> request in order to retrieve the next page of results.</p>"
         },
         "Jobs":{
@@ -773,12 +1254,19 @@
       "max":1000,
       "min":1
     },
+    "NetworkOrigin":{
+      "type":"string",
+      "enum":[
+        "Internet",
+        "VPC"
+      ]
+    },
     "NoSuchPublicAccessBlockConfiguration":{
       "type":"structure",
       "members":{
         "Message":{"shape":"NoSuchPublicAccessBlockConfigurationMessage"}
       },
-      "documentation":"<p/>",
+      "documentation":"<p>Amazon S3 throws this exception if you make a <code>GetPublicAccessBlock</code> request against an account that doesn't have a <code>PublicAccessBlockConfiguration</code> set.</p>",
       "error":{"httpStatusCode":404},
       "exception":true
     },
@@ -818,34 +1306,105 @@
         "S3PutObjectCopy",
         "S3PutObjectAcl",
         "S3PutObjectTagging",
-        "S3InitiateRestoreObject"
+        "S3InitiateRestoreObject",
+        "S3PutObjectLegalHold",
+        "S3PutObjectRetention"
       ]
+    },
+    "Policy":{"type":"string"},
+    "PolicyStatus":{
+      "type":"structure",
+      "members":{
+        "IsPublic":{
+          "shape":"IsPublic",
+          "documentation":"<p/>",
+          "locationName":"IsPublic"
+        }
+      },
+      "documentation":"<p>Indicates whether this access point policy is public. For more information about how Amazon S3 evaluates policies to determine whether they are public, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status\">The Meaning of \"Public\"</a> in the <i>Amazon Simple Storage Service Developer Guide</i>. </p>"
     },
     "PublicAccessBlockConfiguration":{
       "type":"structure",
       "members":{
         "BlockPublicAcls":{
           "shape":"Setting",
-          "documentation":"<p/>",
+          "documentation":"<p>Specifies whether Amazon S3 should block public access control lists (ACLs) for buckets in this account. Setting this element to <code>TRUE</code> causes the following behavior:</p> <ul> <li> <p>PUT Bucket acl and PUT Object acl calls fail if the specified ACL is public.</p> </li> <li> <p>PUT Object calls fail if the request includes a public ACL.</p> </li> <li> <p>PUT Bucket calls fail if the request includes a public ACL.</p> </li> </ul> <p>Enabling this setting doesn't affect existing policies or ACLs.</p>",
           "locationName":"BlockPublicAcls"
         },
         "IgnorePublicAcls":{
           "shape":"Setting",
-          "documentation":"<p/>",
+          "documentation":"<p>Specifies whether Amazon S3 should ignore public ACLs for buckets in this account. Setting this element to <code>TRUE</code> causes Amazon S3 to ignore all public ACLs on buckets in this account and any objects that they contain. </p> <p>Enabling this setting doesn't affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set.</p>",
           "locationName":"IgnorePublicAcls"
         },
         "BlockPublicPolicy":{
           "shape":"Setting",
-          "documentation":"<p/>",
+          "documentation":"<p>Specifies whether Amazon S3 should block public bucket policies for buckets in this account. Setting this element to <code>TRUE</code> causes Amazon S3 to reject calls to PUT Bucket policy if the specified bucket policy allows public access. </p> <p>Enabling this setting doesn't affect existing bucket policies.</p>",
           "locationName":"BlockPublicPolicy"
         },
         "RestrictPublicBuckets":{
           "shape":"Setting",
-          "documentation":"<p/>",
+          "documentation":"<p>Specifies whether Amazon S3 should restrict public bucket policies for buckets in this account. Setting this element to <code>TRUE</code> restricts access to buckets with public policies to only AWS services and authorized users within this account.</p> <p>Enabling this setting doesn't affect previously stored bucket policies, except that public and cross-account access within any public bucket policy, including non-public delegation to specific accounts, is blocked.</p>",
           "locationName":"RestrictPublicBuckets"
         }
       },
-      "documentation":"<p/>"
+      "documentation":"<p>The <code>PublicAccessBlock</code> configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status\">The Meaning of \"Public\"</a> in the Amazon Simple Storage Service Developer Guide.</p>"
+    },
+    "PutAccessPointPolicyRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "Name",
+        "Policy"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The AWS account ID for owner of the bucket associated with the specified access point.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "Name":{
+          "shape":"AccessPointName",
+          "documentation":"<p>The name of the access point that you want to associate with the specified policy.</p>",
+          "location":"uri",
+          "locationName":"name"
+        },
+        "Policy":{
+          "shape":"Policy",
+          "documentation":"<p>The policy that you want to apply to the specified access point. For more information about access point policies, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html\">Managing Data Access with Amazon S3 Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>"
+        }
+      }
+    },
+    "PutJobTaggingRequest":{
+      "type":"structure",
+      "required":[
+        "AccountId",
+        "JobId",
+        "Tags"
+      ],
+      "members":{
+        "AccountId":{
+          "shape":"AccountId",
+          "documentation":"<p>The AWS account ID associated with the Amazon S3 Batch Operations job.</p>",
+          "location":"header",
+          "locationName":"x-amz-account-id"
+        },
+        "JobId":{
+          "shape":"JobId",
+          "documentation":"<p>The ID for the Amazon S3 Batch Operations job whose tags you want to replace.</p>",
+          "location":"uri",
+          "locationName":"id"
+        },
+        "Tags":{
+          "shape":"S3TagSet",
+          "documentation":"<p>The set of tags to associate with the Amazon S3 Batch Operations job.</p>"
+        }
+      }
+    },
+    "PutJobTaggingResult":{
+      "type":"structure",
+      "members":{
+      }
     },
     "PutPublicAccessBlockRequest":{
       "type":"structure",
@@ -856,13 +1415,13 @@
       "members":{
         "PublicAccessBlockConfiguration":{
           "shape":"PublicAccessBlockConfiguration",
-          "documentation":"<p/>",
+          "documentation":"<p>The <code>PublicAccessBlock</code> configuration that you want to apply to the specified Amazon Web Services account.</p>",
           "locationName":"PublicAccessBlockConfiguration",
           "xmlNamespace":{"uri":"http://awss3control.amazonaws.com/doc/2018-08-20/"}
         },
         "AccountId":{
           "shape":"AccountId",
-          "documentation":"<p/>",
+          "documentation":"<p>The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you want to set.</p>",
           "location":"header",
           "locationName":"x-amz-account-id"
         }
@@ -915,7 +1474,8 @@
     "S3BucketArnString":{
       "type":"string",
       "max":128,
-      "min":1
+      "min":1,
+      "pattern":"arn:[^:]+:s3:.*"
     },
     "S3CannedAccessControlList":{
       "type":"string",
@@ -986,12 +1546,24 @@
           "shape":"KmsKeyArnString",
           "documentation":"<p/>"
         },
-        "TargetKeyPrefix":{"shape":"NonEmptyMaxLength1024String"},
-        "ObjectLockLegalHoldStatus":{"shape":"S3ObjectLockLegalHoldStatus"},
-        "ObjectLockMode":{"shape":"S3ObjectLockMode"},
-        "ObjectLockRetainUntilDate":{"shape":"TimeStamp"}
+        "TargetKeyPrefix":{
+          "shape":"NonEmptyMaxLength1024String",
+          "documentation":"<p/>"
+        },
+        "ObjectLockLegalHoldStatus":{
+          "shape":"S3ObjectLockLegalHoldStatus",
+          "documentation":"<p>The Legal Hold status to be applied to all objects in the Batch Operations job.</p>"
+        },
+        "ObjectLockMode":{
+          "shape":"S3ObjectLockMode",
+          "documentation":"<p>The Retention mode to be applied to all objects in the Batch Operations job.</p>"
+        },
+        "ObjectLockRetainUntilDate":{
+          "shape":"TimeStamp",
+          "documentation":"<p>The date when the applied Object Retention configuration will expire on all objects in the Batch Operations job.</p>"
+        }
       },
-      "documentation":"<p>Contains the configuration parameters for a PUT Copy object operation. Amazon S3 batch operations passes each value through to the underlying PUT Copy object API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectCOPY.html\">PUT Object - Copy</a>.</p>"
+      "documentation":"<p>Contains the configuration parameters for a PUT Copy object operation. Amazon S3 Batch Operations passes each value through to the underlying PUT Copy object API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectCOPY.html\">PUT Object - Copy</a>.</p>"
     },
     "S3ExpirationInDays":{
       "type":"integer",
@@ -1061,12 +1633,13 @@
           "documentation":"<p/>"
         }
       },
-      "documentation":"<p>Contains the configuration parameters for an Initiate Glacier Restore job. Amazon S3 batch operations passes each value through to the underlying POST Object restore API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPOSTrestore.html#RESTObjectPOSTrestore-restore-request\">Restoring Archives</a>.</p>"
+      "documentation":"<p>Contains the configuration parameters for an Initiate Glacier Restore job. Amazon S3 Batch Operations passes each value through to the underlying POST Object restore API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPOSTrestore.html#RESTObjectPOSTrestore-restore-request\">Restoring Archives</a>.</p>"
     },
     "S3KeyArnString":{
       "type":"string",
       "max":2000,
-      "min":1
+      "min":1,
+      "pattern":"arn:[^:]+:s3:.*"
     },
     "S3MetadataDirective":{
       "type":"string",
@@ -1074,6 +1647,17 @@
         "COPY",
         "REPLACE"
       ]
+    },
+    "S3ObjectLockLegalHold":{
+      "type":"structure",
+      "required":["Status"],
+      "members":{
+        "Status":{
+          "shape":"S3ObjectLockLegalHoldStatus",
+          "documentation":"<p>The Legal Hold status to be applied to all objects in the Batch Operations job.</p>"
+        }
+      },
+      "documentation":"<p/>"
     },
     "S3ObjectLockLegalHoldStatus":{
       "type":"string",
@@ -1083,6 +1667,13 @@
       ]
     },
     "S3ObjectLockMode":{
+      "type":"string",
+      "enum":[
+        "COMPLIANCE",
+        "GOVERNANCE"
+      ]
+    },
+    "S3ObjectLockRetentionMode":{
       "type":"string",
       "enum":[
         "COMPLIANCE",
@@ -1169,6 +1760,20 @@
         "WRITE_ACP"
       ]
     },
+    "S3Retention":{
+      "type":"structure",
+      "members":{
+        "RetainUntilDate":{
+          "shape":"TimeStamp",
+          "documentation":"<p>The date when the applied Object Retention will expire on all objects in the Batch Operations job.</p>"
+        },
+        "Mode":{
+          "shape":"S3ObjectLockRetentionMode",
+          "documentation":"<p>The Retention mode to be applied to all objects in the Batch Operations job.</p>"
+        }
+      },
+      "documentation":"<p/>"
+    },
     "S3SSEAlgorithm":{
       "type":"string",
       "enum":[
@@ -1184,7 +1789,34 @@
           "documentation":"<p/>"
         }
       },
-      "documentation":"<p>Contains the configuration parameters for a Set Object ACL operation. Amazon S3 batch operations passes each value through to the underlying PUT Object acl API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUTacl.html\">PUT Object acl</a>.</p>"
+      "documentation":"<p>Contains the configuration parameters for a Set Object ACL operation. Amazon S3 Batch Operations passes each value through to the underlying PUT Object acl API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUTacl.html\">PUT Object acl</a>.</p>"
+    },
+    "S3SetObjectLegalHoldOperation":{
+      "type":"structure",
+      "required":["LegalHold"],
+      "members":{
+        "LegalHold":{
+          "shape":"S3ObjectLockLegalHold",
+          "documentation":"<p>The Legal Hold contains the status to be applied to all objects in the Batch Operations job.</p>"
+        }
+      },
+      "documentation":"<p>Contains the configuration parameters for a Set Object Legal Hold operation. Amazon S3 Batch Operations passes each value through to the underlying PUT Object Legal Hold API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.htmll#object-lock-legal-holds\">PUT Object Legal Hold</a>.</p>"
+    },
+    "S3SetObjectRetentionOperation":{
+      "type":"structure",
+      "required":["Retention"],
+      "members":{
+        "BypassGovernanceRetention":{
+          "shape":"Boolean",
+          "documentation":"<p>Indicates if the operation should be applied to objects in the Batch Operations job even if they have Governance-type Object Lock in place.</p>",
+          "box":true
+        },
+        "Retention":{
+          "shape":"S3Retention",
+          "documentation":"<p>Amazon S3 object lock Retention contains the retention mode to be applied to all objects in the Batch Operations job.</p>"
+        }
+      },
+      "documentation":"<p>Contains the configuration parameters for a Set Object Retention operation. Amazon S3 Batch Operations passes each value through to the underlying PUT Object Retention API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-retention-modes\">PUT Object Retention</a>.</p>"
     },
     "S3SetObjectTaggingOperation":{
       "type":"structure",
@@ -1194,7 +1826,7 @@
           "documentation":"<p/>"
         }
       },
-      "documentation":"<p>Contains the configuration parameters for a Set Object Tagging operation. Amazon S3 batch operations passes each value through to the underlying PUT Object tagging API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUTtagging.html\">PUT Object tagging</a>.</p>"
+      "documentation":"<p>Contains the configuration parameters for a Set Object Tagging operation. Amazon S3 Batch Operations passes each value through to the underlying PUT Object tagging API. For more information about the parameters for this operation, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUTtagging.html\">PUT Object tagging</a>.</p>"
     },
     "S3StorageClass":{
       "type":"string",
@@ -1215,11 +1847,11 @@
       ],
       "members":{
         "Key":{
-          "shape":"NonEmptyMaxLength1024String",
+          "shape":"TagKeyString",
           "documentation":"<p/>"
         },
         "Value":{
-          "shape":"MaxLength1024String",
+          "shape":"TagValueString",
           "documentation":"<p/>"
         }
       },
@@ -1236,14 +1868,39 @@
       "max":8192
     },
     "Setting":{"type":"boolean"},
+    "StringForNextToken":{
+      "type":"string",
+      "max":1024,
+      "min":1,
+      "pattern":"^[A-Za-z0-9\\+\\:\\/\\=\\?\\#-_]+$"
+    },
     "SuspendedCause":{
       "type":"string",
       "max":1024,
       "min":1
     },
     "SuspendedDate":{"type":"timestamp"},
+    "TagKeyString":{
+      "type":"string",
+      "max":1024,
+      "min":1,
+      "pattern":"^([\\p{L}\\p{Z}\\p{N}_.:=+\\-@%]*)$"
+    },
+    "TagValueString":{
+      "type":"string",
+      "max":1024,
+      "pattern":"^([\\p{L}\\p{Z}\\p{N}_.:=+\\-@%]*)$"
+    },
     "TimeStamp":{"type":"timestamp"},
     "TooManyRequestsException":{
+      "type":"structure",
+      "members":{
+        "Message":{"shape":"ExceptionMessage"}
+      },
+      "documentation":"<p/>",
+      "exception":true
+    },
+    "TooManyTagsException":{
       "type":"structure",
       "members":{
         "Message":{"shape":"ExceptionMessage"}
@@ -1346,6 +2003,22 @@
           "documentation":"<p>The reason that the specified job's status was updated.</p>"
         }
       }
+    },
+    "VpcConfiguration":{
+      "type":"structure",
+      "required":["VpcId"],
+      "members":{
+        "VpcId":{
+          "shape":"VpcId",
+          "documentation":"<p>If this field is specified, this access point will only allow connections from the specified VPC ID.</p>"
+        }
+      },
+      "documentation":"<p>The virtual private cloud (VPC) configuration for an access point.</p>"
+    },
+    "VpcId":{
+      "type":"string",
+      "max":1024,
+      "min":1
     }
   },
   "documentation":"<p> AWS S3 Control provides access to Amazon S3 control plane operations. </p>"
